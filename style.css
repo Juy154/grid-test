@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: lightgray;
+}
+
+canvas {
+  display: block;
+}
+
+
+div {
+  background-color: mediumblue;
+
+  width: auto;
+  height: 100vh;
+  margin: 0;
+
+  
+}
