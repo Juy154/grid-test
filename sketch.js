@@ -30,7 +30,7 @@ function draw() {
 
   // click or touch feedback
   if (mouseIsPressed) {
-    ellipse(mouseX,mouseY,8/width);
+    ellipse(mouseX,mouseY,width/8);
   }
   
 
