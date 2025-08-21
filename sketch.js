@@ -1,46 +1,82 @@
 let canvas;
 
-function setup() {
-  // canvas mit div verbinden
-  const container = document.getElementById('container');
-  canvas = createCanvas(container.offsetWidth, container.offsetHeight); // maße des containers in variable speichern
-  canvas.parent('container'); // canvas in div einfügen
+let tileCountX;
+let tileWidth;
 
+let tileArray = [];
+
+function setup() {
+  // canvas x div
+  const container = document.getElementById('container'); // ?
+  canvas = createCanvas(container.offsetWidth, container.offsetHeight); // canvas nach div bauen
+  canvas.parent('container'); // canvas mit div verbinden
+
+  grid();
+}
+
+function grid() {
+  // dynamische tile
+  tileCountX = constrain(round(map(width, 320, 1600, 4, 100)), 4, 100);
+  tileWidth = width / tileCountX;
+
+  tileCountY = round(height / tileWidth);
+  tileWidth = height / tileCountY; 
+  
+
+  // neue array
+  tileArray = [];
+  for (let y = 0; y < tileCountY; y++) {
+    let row = [];
+    for (let x = 0; x < tileCountX; x++) {
+      row.push("#25619B"); // Startfarbe (weiß)
+    }
+    tileArray.push(row);
+  }
 }
 
 function draw() {
   background(220);
 
-
-  // nicht vom viewport abgeschnitten
-  let tileCountX = round(map(width, 320, 1600, 4, 100)); // display breite x anzahl tiles
-  let tileWidth = width/tileCountX; // canvas durch anzahl der tiles
-
-
-  fill ("#25619B");
   stroke(220);
   strokeWeight(2);
 
-  
-  for (let x2 = 0; x2 < width; x2 += tileWidth) {
-    for (let y2 = 0; y2 < height; y2 += tileWidth) {
-      square(x2,y2,tileWidth);
+  for (let y = 0; y < tileCountY; y++) {
+    for (let x = 0; x < tileCountX; x++) {
+      let posX = x * tileWidth;
+      let posY = y * tileWidth;
+      let color = tileArray[y][x];
+
+      fill(color);
+      square(posX, posY, tileWidth);
+
+      // click feedback
+      if (
+        mouseIsPressed &&
+        mouseX > posX && mouseX < posX + tileWidth &&
+        mouseY > posY && mouseY < posY + tileWidth
+      ) {
+        tileArray[y][x] = "#FF0000"; // farbe
+        fill("black");
+      }
+
+      //square(posX, posY, tileWidth);
+
+
     }
   }
 
-  // click or touch feedback
+  // pointer
   if (mouseIsPressed) {
-    ellipse(mouseX,mouseY,width/8);
+    noFill();
+    stroke(255);
+    let circleSize = map(width, 320, 1600, 80, 10);
+    circleSize = constrain(circleSize, 10, 80);
+    ellipse(mouseX, mouseY, circleSize );
   }
-  
-
-
 }
 
-
-// fenstergröße ändert sich
 function windowResized() {
-  // canvas anpassen
   const container = document.getElementById('container');
   resizeCanvas(container.offsetWidth, container.offsetHeight);
+  grid(); // array neu berechnen
 }
