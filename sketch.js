@@ -13,7 +13,7 @@ function draw() {
 
 
   // nicht vom viewport abgeschnitten
-  let tileCountX = round(map(width, 320, 1600, 5, 100)); // display breite x anzahl tiles
+  let tileCountX = round(map(width, 320, 1600, 10, 100)); // display breite x anzahl tiles
   let tileWidth = width/tileCountX; // canvas durch anzahl der tiles
 
 
@@ -30,7 +30,7 @@ function draw() {
 
   // click or touch feedback
   if (mouseIsPressed) {
-    ellipse(mouseX,mouseY,width/2);
+    ellipse(mouseX,mouseY,width/8);
   }
   
 
