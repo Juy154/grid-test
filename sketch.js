@@ -54,10 +54,10 @@ function draw() {
         mouseIsPressed &&
         mouseX > posX && mouseX < posX + tileWidth &&
         mouseY > posY && mouseY < posY + tileWidth
-      ) {
+      ){
         tileArray[y][x] = "#FF0000"; // farbe
-        fill("black");
-      }
+        //fill(255);
+      } 
 
       square(posX, posY, tileWidth);
 
@@ -66,16 +66,18 @@ function draw() {
   }
 
 
-  /*
+  
   // pointer
   if (mouseIsPressed) {
     noFill();
-    stroke(255);
+    stroke(255,100);
     let circleSize = map(width, 320, 1600, 80, 10);
     circleSize = constrain(circleSize, 10, 80);
-    ellipse(mouseX, mouseY, circleSize );
+    //circle(mouseX, mouseY,circleSize);
+    strokeWeight(circleSize);
+    point(mouseX, mouseY);
   }
-  */
+  
 }
 
 function windowResized() {
