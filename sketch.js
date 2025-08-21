@@ -30,7 +30,7 @@ function draw() {
 
   // click or touch feedback
   if (mouseIsPressed) {
-    let size = round(map(width, 320, 1600, 80, 20));
+    let size = round(map(width, 320, 1600, 40, 100));
     ellipse(mouseX,mouseY,width/size);
   }
   
