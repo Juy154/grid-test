@@ -62,14 +62,15 @@ function draw() {
       square(posX, posY, tileWidth);
 
 
-    }
-  }
+    } // Ende tileCountX
+  } // Ende tileCountY
 
   
-}
+} // Ende draw
+
 
 function windowResized() {
   const container = document.getElementById('container');
   resizeCanvas(container.offsetWidth, container.offsetHeight);
   grid(); // array neu berechnen
-}
+} // Ende windowResized
