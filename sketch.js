@@ -16,7 +16,7 @@ function setup() {
 
 function grid() {
   // dynamische tile
-  tileCountX = constrain(round(map(width, 320, 1600, 4, 100)), 4, 100);
+  tileCountX = round(map(width, 320, 1600, 4, 50));
   tileWidth = width / tileCountX;
 
   tileCountY = round(height / tileWidth);
@@ -59,20 +59,13 @@ function draw() {
         fill("black");
       }
 
-      //square(posX, posY, tileWidth);
+      square(posX, posY, tileWidth);
 
 
     }
   }
 
-  // pointer
-  if (mouseIsPressed) {
-    noFill();
-    stroke(255);
-    let circleSize = map(width, 320, 1600, 80, 10);
-    circleSize = constrain(circleSize, 10, 80);
-    ellipse(mouseX, mouseY, circleSize );
-  }
+  
 }
 
 function windowResized() {
