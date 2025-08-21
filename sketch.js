@@ -62,15 +62,24 @@ function draw() {
       square(posX, posY, tileWidth);
 
 
-    } // Ende tileCountX
-  } // Ende tileCountY
+    }
+  }
 
-  
-} // Ende draw
 
+  /*
+  // pointer
+  if (mouseIsPressed) {
+    noFill();
+    stroke(255);
+    let circleSize = map(width, 320, 1600, 80, 10);
+    circleSize = constrain(circleSize, 10, 80);
+    ellipse(mouseX, mouseY, circleSize );
+  }
+  */
+}
 
 function windowResized() {
   const container = document.getElementById('container');
   resizeCanvas(container.offsetWidth, container.offsetHeight);
   grid(); // array neu berechnen
-} // Ende windowResized
+}
